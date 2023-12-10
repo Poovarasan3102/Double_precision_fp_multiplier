@@ -8,19 +8,18 @@ Reg#(int) count <- mkReg(1) ;
 Reg#(Bit#(64)) outputmul <- mkReg(0) ;
 Reg#(Bit#(64)) ip1 <- mkReg(0) ;
 Reg#(Bit#(64)) ip2 <- mkReg(0) ;
-Reg#(Bit#(2)) flags<-mkReg(0);
+Reg#(Bit#(6)) flags<-mkReg(0);
 
 MulIfc mul <- mkmul() ;
 
-Bit#(64) pyld1, pyld2, pyld3, pyld4, pyld5 ;
+Bit#(64) pyld1, pyld2, pyld3, pyld4, pyld5, pyld6 ;
 
 pyld1=64'b0100000000111001100000000000000000000000000000000000000000000000;
 pyld2=64'b1011111111011000000000000000000000000000000000000000000000000000;
-
 pyld3=64'b0011111111011000000000000000000000000000000000000000000000000000;
-
 pyld4=64'b0000000000000000000000000000000000000000000000000000000000000000;
 pyld5=64'b0101011110100000000000000000000000000000000000000000000000000000;
+pyld6=64'b1011111111011000000000000000000000000000000011110000000000000000;
 
 
 rule timer;
@@ -29,9 +28,7 @@ rule timer;
       if(clk == 25) begin 
          $finish;
       end
-
-      
-    
+ 
 endrule
 
 rule data;
@@ -60,6 +57,14 @@ begin
       mul.fp2(pyld5);
 end
 
+if(clk == 4 ) // Negative number x Negative number
+begin 
+      ip1<=pyld2;
+      ip2<=pyld6;
+      mul.fp1(pyld2);
+      mul.fp2(pyld6);
+end
+
 endrule
 
 rule outputd;
@@ -78,7 +83,3 @@ if(clk<15) begin
 endrule
 
 endmodule
-
-
-
-
