@@ -157,17 +157,17 @@ To comprehensively verify our design, we have developed and tested using test be
 **How to Run**
 
 1. It is assumed the system has Bluespec System Verilog compiler and the source code in working directory. 
-2. Enter into the running_environment directory  #cd running_environment
+2. Enter into the running_env directory  #cd running_env
 3. Enter command #make clean and #make compile link simulate  //This will executes the required command to compile and simulate the .bsv with the testbench and generates the vcd file that can be viewed in via GTK.
 4. We have two test bench as I mentioned earlier (tb.bsv and tb_flag.bsv)
-5. To test the corner cases with tb.bsv make the following change in th Makefile in the running_environment directory and then execute the 3rd step
+5. To test the corner cases with tb.bsv make the following change in th Makefile in the running_env directory and then execute the 3rd step
    TOPFILE   = tb.bsv
    TOPMODULE = mktester
-6. To test the flag cases with tb_flag.bsv make the following change in th Makefile in the running_environment directory and then execute the 3rd step
+6. To test the flag cases with tb_flag.bsv make the following change in th Makefile in the running_env directory and then execute the 3rd step
    TOPFILE   = tb_flag.bsv
    TOPMODULE = mktester_flag
 7. Enter command #make verilog to generate the equivalent verilog file for the BSV Design.
-8. The verilog file will be generated in the running_environment/verilog_dir, which we will be using for the synthesis using opensource tool (Openlane)
+8. The verilog file will be generated in the running_env/verilog_dir, which we will be using for the synthesis using opensource tool (Openlane)
 9. Enter the OpenLane directory and enter command #sudo make mount //you will enter into the openlane environment
 10 Add your file in the OpenLane/designs directory by creating folder like example spm design and specify the top module in the config.json 
 11 Then run this command #./flow.tcl -design design_directory
