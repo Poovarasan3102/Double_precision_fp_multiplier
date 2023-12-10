@@ -151,7 +151,6 @@ To comprehensively verify our design, we have developed and tested using test be
 
                 Flags: 000001
 
-
 **These two test benches provide comprehensive coverage for our double precision floating point multiplication unit, ensuring its accuracy, reliability, and adherence to the IEEE-754 standard. Further, the operation of the pipelined multiplier has been verified by simulating the design and verifying the outputs using ‘GTK Wave’.
 
 **How to Run**
@@ -167,7 +166,11 @@ To comprehensively verify our design, we have developed and tested using test be
    TOPFILE   = tb_flag.bsv
    TOPMODULE = mktester_flag
 7. Enter command #make verilog to generate the equivalent verilog file for the BSV Design.
-8. The verilog file will be generated in the cad_for_vlsi/verilog_dir, which we will be using for the synthesis using opensource tool.
+8. The verilog file will be generated in the cad_for_vlsi/verilog_dir, which we will be using for the synthesis using opensource tool (Openlane)
+9. Enter the OpenLane directory and enter command #sudo make mount //you will enter into the openlane environment
+10 Add your file in the OpenLane/designs directory by creating folder like example spm design and specify the top module in the config.json 
+11 Then run this command #./flow.tcl -design design_directory
 
 **SYNTHESIS**
 
+We used OpenLane synthesis tool that will generate the synthesis report in the working directory of the design in the runs directory and we can find the Area and STA summary on that directory.
