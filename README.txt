@@ -1,4 +1,5 @@
 **Project Title: Pipelined Double precision (fp64) Floating point Multiplier** 
+*Gayathri Subramanian - cs23z065 Poovarasan M - me23z055*
 
 **DESIGN**
 
