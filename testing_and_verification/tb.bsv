@@ -8,7 +8,6 @@ Reg#(int) count <- mkReg(1) ;
 Reg#(Bit#(64)) outputmul <- mkReg(0) ;
 Reg#(Bit#(64)) ip1 <- mkReg(0) ;
 Reg#(Bit#(64)) ip2 <- mkReg(0) ;
-Reg#(Bit#(6)) flags<-mkReg(0);
 
 MulIfc mul <- mkmul() ;
 
@@ -73,8 +72,7 @@ if(clk<15) begin
          let b <-mul.outputflag;
          outputmul<=a;
          $display ("Sample no: %0d",count) ;
-         $display ("Output: %b",a) ;
-         $display ("Flags: %b",b) ;
+         $display ("Output: %b",a) ;         
          flags<=b;
          count<=count+1;
       end
