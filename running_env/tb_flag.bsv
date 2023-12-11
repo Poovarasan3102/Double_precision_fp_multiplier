@@ -5,6 +5,9 @@ module mktester_flag(Empty);
 Reg#(int) clk <- mkReg(0) ;
 Reg#(int) count <- mkReg(1) ;
 
+Reg#(Bit#(64)) ip1 <- mkReg(0) ;
+Reg#(Bit#(64)) ip2 <- mkReg(0) ;
+
 Reg#(Bit#(64)) outputmul <- mkReg(0) ;
 Reg#(Bit#(6)) flags<-mkReg(0);
 
@@ -27,9 +30,7 @@ rule timer;
 
       if(clk == 25) begin 
          $finish;
-      end
-
-      
+      end      
     
 endrule
 
@@ -37,35 +38,40 @@ rule data;
 
 if(clk == 1 ) // Underflow
 begin 
-      
+      ip1<=pyld1;
+      ip2<=pyld2;
       mul.fp1(pyld1);
       mul.fp2(pyld2);
 end
 
 if(clk == 2 ) // Overflow
 begin 
-      
+      ip1<=pyld3;
+      ip2<=pyld4;      
       mul.fp1(pyld3);
       mul.fp2(pyld4);
 end
 
 if(clk == 3 ) // Positive Infinite
 begin 
-      
+      ip1<=pyld5;
+      ip2<=pyld6;
       mul.fp1(pyld5);
       mul.fp2(pyld6);
 end
 
 if(clk == 4 ) // Negative Infinite
 begin 
-      
+      ip1<=pyld6;
+      ip2<=pyld7;
       mul.fp1(pyld6);
       mul.fp2(pyld7);
 end
 
 if(clk == 5 ) // NaN
 begin 
-      
+      ip1<=pyld6;
+      ip2<=pyld8;
       mul.fp1(pyld6);
       mul.fp2(pyld8);
 end
