@@ -1,4 +1,4 @@
-import merged ::* ;
+import dpfpmultiplier ::* ;
 
 module mktester(Empty);
 
@@ -73,7 +73,6 @@ if(clk<15) begin
          outputmul<=a;
          $display ("Sample no: %0d",count) ;
          $display ("Output: %b",a) ;         
-         flags<=b;
          count<=count+1;
       end
 
